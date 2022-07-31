@@ -1,9 +1,12 @@
-﻿using CursoNet6.Datos;
-using CursoNet6.Models;
+﻿
+using CursoNet6.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CursoNet6.Controllers
 {
+
+    [Authorize(Roles = WC.AdminRole)]
     public class TipoaplicacionController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -93,8 +96,6 @@ namespace CursoNet6.Controllers
             _db.TipoAplicacion.Remove(tipoAplicacion);
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
-
-            return View(tipoAplicacion);
         }
     }
 }

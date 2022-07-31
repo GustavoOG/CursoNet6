@@ -15,10 +15,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
+    <PackageReference Include="SendGrid" Version="9.28.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="wwwroot\Imagenes\producto\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CursoNet6.AccesoDatos\CursoNet6.AccesoDatos.csproj" />
+    <ProjectReference Include="..\CursoNet6.Modelos\CursoNet6.Modelos.csproj" />
+    <ProjectReference Include="..\CursoNet6.Utilidades\CursoNet6.Utilidades.csproj" />
   </ItemGroup>
 
 </Project>

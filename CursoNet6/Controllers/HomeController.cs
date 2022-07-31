@@ -1,7 +1,6 @@
-﻿using CursoNet6.Datos;
-using CursoNet6.Models;
-using CursoNet6.Models.ViewModels;
-using CursoNet6.Utilidades;
+﻿
+using CursoNet6.Modelos;
+using CursoNet6.Modelos.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
