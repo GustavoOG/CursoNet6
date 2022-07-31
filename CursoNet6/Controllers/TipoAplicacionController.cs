@@ -1,5 +1,5 @@
 ﻿
-using CursoNet6.Models;
+using CursoNet6.Modelos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -96,8 +96,6 @@ namespace CursoNet6.Controllers
             _db.TipoAplicacion.Remove(tipoAplicacion);
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
-
-            return View(tipoAplicacion);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using CursoNet6.Models;
+﻿using CursoNet6.Modelos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

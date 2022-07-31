@@ -4,6 +4,202 @@
     "D:\\Proyectos\\CursoNet6\\CursoNet6\\CursoNet6.csproj": {}
   },
   "projects": {
+    "D:\\Proyectos\\CursoNet6\\CursoNet6.AccesoDatos\\CursoNet6.AccesoDatos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\CursoNet6\\CursoNet6.AccesoDatos\\CursoNet6.AccesoDatos.csproj",
+        "projectName": "CursoNet6.AccesoDatos",
+        "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.AccesoDatos\\CursoNet6.AccesoDatos.csproj",
+        "packagesPath": "C:\\Users\\jdxta\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.AccesoDatos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jdxta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj": {
+                "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj",
+        "projectName": "CursoNet6.Modelos",
+        "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj",
+        "packagesPath": "C:\\Users\\jdxta\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jdxta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.ViewFeatures": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj",
+        "projectName": "CursoNet6.Utilidades",
+        "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj",
+        "packagesPath": "C:\\Users\\jdxta\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jdxta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\Proyectos\\CursoNet6\\CursoNet6\\CursoNet6.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +223,17 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Proyectos\\CursoNet6\\CursoNet6.AccesoDatos\\CursoNet6.AccesoDatos.csproj": {
+                "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.AccesoDatos\\CursoNet6.AccesoDatos.csproj"
+              },
+              "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj": {
+                "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj"
+              },
+              "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj": {
+                "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

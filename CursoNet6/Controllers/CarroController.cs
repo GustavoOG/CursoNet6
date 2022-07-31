@@ -1,6 +1,5 @@
-﻿using CursoNet6.Models;
-using CursoNet6.Models.ViewModels;
-using CursoNet6.Utilidades;
+﻿using CursoNet6.Modelos;
+using CursoNet6.Modelos.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -86,7 +85,7 @@ namespace CursoNet6.Controllers
             StringBuilder productoListaSB = new StringBuilder();
             foreach (var prod in productoUsuarioVM.ProductoLista)
             {
-                productoListaSB.Append($" - Nombre: {prod.NombreProducto} <span style=\"font.size:14px;\"> (ID: {prod.Id})</span> <br />");
+                productoListaSB.Append($" - Nombre: {prod.NombreProducto} <span style=\"font-size:14px;\"> (ID: {prod.Id})</span> <br />");
             }
             string messageBody = string.Format(HtmlBody,
                 productoUsuarioVM.UsuarioAplicacion.NombreCompleto,

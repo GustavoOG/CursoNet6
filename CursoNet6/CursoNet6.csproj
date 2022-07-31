@@ -19,7 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="wwwroot\Imagenes\producto\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CursoNet6.AccesoDatos\CursoNet6.AccesoDatos.csproj" />
+    <ProjectReference Include="..\CursoNet6.Modelos\CursoNet6.Modelos.csproj" />
+    <ProjectReference Include="..\CursoNet6.Utilidades\CursoNet6.Utilidades.csproj" />
   </ItemGroup>
 
 </Project>

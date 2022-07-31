@@ -1,5 +1,5 @@
-global using CursoNet6.Datos;
-using CursoNet6.Utilidades;
+global using CursoNet6.AccesoDatos.Datos;
+global using CursoNet6.Utilidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;

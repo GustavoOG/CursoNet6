@@ -1,6 +1,6 @@
 ﻿
-using CursoNet6.Models;
-using CursoNet6.Models.ViewModels;
+using CursoNet6.Modelos;
+using CursoNet6.Modelos.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
