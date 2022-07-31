@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UQBlv15Cg4h9ZgfvE+nsq6EzwEoeadugpXEKBrIcnvI=",
+  "Hash": "6U/ycQiqGsgXku3fCcOSTs+bKY4qguR/8sw+r/JUCcA=",
   "Source": "CursoNet6",
   "BasePath": "_content/CursoNet6",
   "Mode": "Default",
@@ -36890,23 +36890,6 @@
       "OriginalItemSpec": "wwwroot\\fontawesome\\webfonts\\fa-v4compatibility.woff2"
     },
     {
-      "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Imagenes\\patio.jpg",
-      "SourceId": "CursoNet6",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\",
-      "BasePath": "_content/CursoNet6",
-      "RelativePath": "Imagenes/patio.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Imagenes\\patio.jpg"
-    },
-    {
       "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Imagenes\\producto\\6ada0c52-88f8-477c-9e17-4cd73cbab3e6.jpg",
       "SourceId": "CursoNet6",
       "SourceType": "Discovered",
@@ -37959,40 +37942,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Templetes\\patio.jpg",
-      "SourceId": "CursoNet6",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\",
-      "BasePath": "_content/CursoNet6",
-      "RelativePath": "Templetes/patio.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Templetes\\patio.jpg"
-    },
-    {
-      "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Templetes\\PlantillaOrden.html",
-      "SourceId": "CursoNet6",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\",
-      "BasePath": "_content/CursoNet6",
-      "RelativePath": "Templetes/PlantillaOrden.html",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Templetes\\PlantillaOrden.html"
     }
   ]
 }
