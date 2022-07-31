@@ -536,5 +536,3 @@ D:\Proyectos\CursoNet6\CursoNet6\obj\Debug\net6.0\refint\CursoNet6.dll
 D:\Proyectos\CursoNet6\CursoNet6\obj\Debug\net6.0\CursoNet6.pdb
 D:\Proyectos\CursoNet6\CursoNet6\obj\Debug\net6.0\CursoNet6.genruntimeconfig.cache
 D:\Proyectos\CursoNet6\CursoNet6\obj\Debug\net6.0\ref\CursoNet6.dll
-D:\Proyectos\CursoNet6\CursoNet6\bin\Debug\net6.0\SendGrid.dll
-D:\Proyectos\CursoNet6\CursoNet6\bin\Debug\net6.0\StarkbankEcdsa.dll

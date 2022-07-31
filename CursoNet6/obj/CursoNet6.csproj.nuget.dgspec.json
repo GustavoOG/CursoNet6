@@ -61,10 +61,6 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.7, )"
-            },
-            "SendGrid": {
-              "target": "Package",
-              "version": "[9.28.0, )"
             }
           },
           "imports": [
