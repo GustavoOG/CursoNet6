@@ -1,9 +1,10 @@
-﻿using CursoNet6.Datos;
-using CursoNet6.Models;
+﻿using CursoNet6.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CursoNet6.Controllers
 {
+    [Authorize(Roles = WC.AdminRole)]
     public class CategoriaController : Controller
     {
         private readonly ApplicationDbContext _db;
