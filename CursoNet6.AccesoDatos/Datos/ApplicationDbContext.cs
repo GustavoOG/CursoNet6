@@ -18,5 +18,9 @@ namespace CursoNet6.AccesoDatos.Datos
         public DbSet<Producto> Producto { get; set; }
         public DbSet<UsuarioAplicacion> UsuarioAplicacion { get; set; }
 
+        public DbSet<Orden> Orden { get; set; }
+
+        public DbSet<OrdenDetalle> OrdenDetalle { get; set; }
+
     }
 }

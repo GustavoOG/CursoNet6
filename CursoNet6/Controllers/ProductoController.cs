@@ -3,35 +3,33 @@ using CursoNet6.Modelos;
 using CursoNet6.Modelos.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace CursoNet6.Controllers
 {
     [Authorize(Roles = WC.AdminRole)]
     public class ProductoController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IProductoRepositorio _prodRepo;
 
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductoController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+        public ProductoController(IProductoRepositorio prodRepo, IWebHostEnvironment webHostEnvironment)
         {
-            this._db = db;
+            this._prodRepo = prodRepo;
             this._webHostEnvironment = webHostEnvironment;
         }
 
 
         public IActionResult Index()
         {
-            IEnumerable<Producto> lista = _db.Producto.Include(c => c.Categoria).Include(c => c.TipoAplicacion);
+            IEnumerable<Producto> lista = _prodRepo.ObtenerTodos(incluirPropiedades: "Categoria,TipoAplicacion");
             return View(lista);
         }
 
         //Get
         public IActionResult Upsert(int? Id)
         {
-            //IEnumerable<SelectListItem> categoriaDropDown = _db.Categoria.Select(m => new SelectListItem()
+            //IEnumerable<SelectListItem> categoriaDropDown = _prodRepo.Categoria.Select(m => new SelectListItem()
             //{
             //    Text = m.NombreCategoria,
             //    Value = m.Id.ToString()
@@ -40,16 +38,8 @@ namespace CursoNet6.Controllers
             ProductoVM productoVM = new ProductoVM()
             {
                 Producto = new Producto(),
-                CategoriaLista = _db.Categoria.Select(m => new SelectListItem()
-                {
-                    Text = m.NombreCategoria,
-                    Value = m.Id.ToString()
-                }),
-                TipoAplicacionLista = _db.TipoAplicacion.Select(m => new SelectListItem()
-                {
-                    Text = m.Nombre,
-                    Value = m.Id.ToString()
-                })
+                CategoriaLista = _prodRepo.ObtenerTodosDownList(WC.CategoriaNombre),
+                TipoAplicacionLista = _prodRepo.ObtenerTodosDownList(WC.TipoAplicacionNombre)
             };
 
             //ViewBag.categoriaDropDown = categoriaDropDown;
@@ -60,7 +50,7 @@ namespace CursoNet6.Controllers
             }
             else
             {
-                productoVM.Producto = _db.Producto.Find(Id.Value);
+                productoVM.Producto = _prodRepo.Obtener(Id.GetValueOrDefault());
                 if (producto == null)
                 {
                     return NotFound();
@@ -88,12 +78,12 @@ namespace CursoNet6.Controllers
                         files[0].CopyTo(fileStream);
                     }
                     productoVM.Producto.ImagenUrl = filenName + extension;
-                    _db.Producto.Add(productoVM.Producto);
+                    _prodRepo.Agregar(productoVM.Producto);
                 }
                 else
                 {
                     //Actualizar
-                    var objProducto = _db.Producto.AsNoTracking().FirstOrDefault(p => p.Id == productoVM.Producto.Id);
+                    var objProducto = _prodRepo.ObtenerPrimero(p => p.Id == productoVM.Producto.Id, isTracking: false);
                     if (files.Count > 0)
                     {//Cargar nueva imagen 
                         string uploat = Path.Combine(webRootPath + WC.ImagenRuta);
@@ -116,24 +106,15 @@ namespace CursoNet6.Controllers
                     {
                         productoVM.Producto.ImagenUrl = objProducto.ImagenUrl;
                     }
-                    _db.Producto.Update(productoVM.Producto);
+                    _prodRepo.Actualizar(productoVM.Producto);
                 }
-                _db.SaveChanges();
+                _prodRepo.Grabar();
                 return RedirectToAction("index");
             }// if ModelIsValid
 
             //Se llenan  nuevamente las listas si algo falla
-            productoVM.CategoriaLista = _db.Categoria.Select(m => new SelectListItem()
-            {
-                Text = m.NombreCategoria,
-                Value = m.Id.ToString()
-            });
-            productoVM.TipoAplicacionLista = _db.TipoAplicacion.Select(m => new SelectListItem()
-            {
-                Text = m.Nombre,
-                Value = m.Id.ToString()
-            });
-
+            productoVM.CategoriaLista = _prodRepo.ObtenerTodosDownList(WC.CategoriaNombre);
+            productoVM.TipoAplicacionLista = _prodRepo.ObtenerTodosDownList(WC.TipoAplicacionNombre);
             return View(productoVM);
         }
 
@@ -147,8 +128,8 @@ namespace CursoNet6.Controllers
             }
             else
             {
-                Producto producto = _db.Producto.Include(c => c.Categoria).Include(c => c.TipoAplicacion)
-                        .FirstOrDefault(c => c.Id == Id);
+                Producto producto = _prodRepo.ObtenerPrimero(c => c.Id == Id, incluirPropiedades: "Categoria,TipoAplicacion");
+
 
                 if (producto == null)
                 {
@@ -178,8 +159,8 @@ namespace CursoNet6.Controllers
             }
             //borrar imagen anterior
 
-            _db.Producto.Remove(producto);
-            _db.SaveChanges();
+            _prodRepo.Remover(producto);
+            _prodRepo.Grabar();
             return RedirectToAction("Index");
         }
 

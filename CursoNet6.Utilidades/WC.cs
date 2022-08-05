@@ -12,5 +12,9 @@
 
         public const string EmailAdmin = "jdxtavo@gmail.com";
 
+        public const string CategoriaNombre = "Categoria";
+
+        public const string TipoAplicacionNombre = "TipoAplicacion";
+
     }
 }

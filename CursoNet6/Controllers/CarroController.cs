@@ -11,21 +11,30 @@ namespace CursoNet6.Controllers
     [Authorize]
     public class CarroController : Controller
     {
-        private readonly ApplicationDbContext _db;
 
         private readonly IWebHostEnvironment _webHostEnvironment;
-
         private readonly IEmailSender _emailSender;
+        private readonly IProductoRepositorio _productoRepositorio;
+        private readonly IUsuarioAplicacionRepositorio _usuarioAplicacionRepositorio;
+        private readonly IOrdenRepositorio _ordenRepositorio;
+        private readonly IOrdenDetalleRepositorio _ordenDetalleRepositorio;
 
         //BindProperty para utilizar propiedad en todo el controlador y no se pierdan sus propiedades
         [BindProperty]
         public ProductoUsuarioVM productoUsuarioVM { get; set; }
 
-        public CarroController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender)
+        public CarroController(IWebHostEnvironment webHostEnvironment, IEmailSender emailSender,
+            IProductoRepositorio productoRepositorio,
+            IUsuarioAplicacionRepositorio usuarioAplicacionRepositorio,
+            IOrdenRepositorio ordenRepositorio,
+            IOrdenDetalleRepositorio ordenDetalleRepositorio)
         {
-            _db = db;
             _webHostEnvironment = webHostEnvironment;
             _emailSender = emailSender;
+            _productoRepositorio = productoRepositorio;
+            _usuarioAplicacionRepositorio = usuarioAplicacionRepositorio;
+            _ordenRepositorio = ordenRepositorio;
+            _ordenDetalleRepositorio = ordenDetalleRepositorio;
         }
 
         public IActionResult Index()
@@ -37,7 +46,7 @@ namespace CursoNet6.Controllers
                 carroComprasList = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
             List<int> prodEnCarro = carroComprasList.Select(m => m.ProductoID).ToList();
-            IEnumerable<Producto> prodList = _db.Producto.Where(m => prodEnCarro.Contains(m.Id));
+            IEnumerable<Producto> prodList = _productoRepositorio.ObtenerTodos(m => prodEnCarro.Contains(m.Id));
             return View(prodList);
         }
 
@@ -61,10 +70,11 @@ namespace CursoNet6.Controllers
                 carroComprasList = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
             List<int> prodEnCarro = carroComprasList.Select(m => m.ProductoID).ToList();
+            IEnumerable<Producto> prodLIst = _productoRepositorio.ObtenerTodos(m => prodEnCarro.Contains(m.Id));
             productoUsuarioVM = new ProductoUsuarioVM()
             {
-                UsuarioAplicacion = _db.UsuarioAplicacion.FirstOrDefault(m => m.Id == claim.Value),
-                ProductoLista = _db.Producto.Where(m => prodEnCarro.Contains(m.Id)).ToList()
+                UsuarioAplicacion = _usuarioAplicacionRepositorio.ObtenerPrimero(m => m.Id == claim.Value),
+                ProductoLista = prodLIst.ToList()
             };
 
             return View(productoUsuarioVM);
@@ -74,6 +84,8 @@ namespace CursoNet6.Controllers
         [ActionName("Resumen")]
         public async Task<IActionResult> ResumenPost(ProductoUsuarioVM productoUsuarioVM)
         {
+            var claimsidentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsidentity.FindFirst(ClaimTypes.NameIdentifier);
             var rutaTemplete = Path.Combine(_webHostEnvironment.WebRootPath, "Templetes", "PlantillaOrden.html");
             var subject = "Nueva Orden";
             string HtmlBody = "";
@@ -93,6 +105,30 @@ namespace CursoNet6.Controllers
                 productoUsuarioVM.UsuarioAplicacion.PhoneNumber, productoListaSB.ToString());
 
             await _emailSender.SendEmailAsync(WC.EmailAdmin, subject, messageBody);
+
+            //Grabar la Orden y Detalle en la DB
+            Orden orden = new Orden()
+            {
+                UsuarioAplicacionId = claim.Value,
+                NombreCompleto = productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
+                Email = productoUsuarioVM.UsuarioAplicacion.Email,
+                Telefono = productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
+                FechaOrden = DateTime.Now
+            };
+            _ordenRepositorio.Agregar(orden);
+            _ordenRepositorio.Grabar();
+
+            foreach (var prod in productoUsuarioVM.ProductoLista)
+            {
+                OrdenDetalle ordenDetalle = new OrdenDetalle()
+                {
+                    OrdenId = orden.Id,
+                    ProductoId = prod.Id
+                };
+                _ordenDetalleRepositorio.Agregar(ordenDetalle);
+            }
+            _ordenDetalleRepositorio.Grabar();
+
 
             return RedirectToAction(nameof(Confirmacion));
         }
