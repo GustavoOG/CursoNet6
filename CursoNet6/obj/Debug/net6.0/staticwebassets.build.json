@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UQBlv15Cg4h9ZgfvE+nsq6EzwEoeadugpXEKBrIcnvI=",
+  "Hash": "tC5exP7llVUTNvc7CP06mL2S2rg0GwcbZFwt3gl/Hc0=",
   "Source": "CursoNet6",
   "BasePath": "_content/CursoNet6",
   "Mode": "Default",
@@ -36890,6 +36890,23 @@
       "OriginalItemSpec": "wwwroot\\fontawesome\\webfonts\\fa-v4compatibility.woff2"
     },
     {
+      "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Imagenes\\dust_scratches.png",
+      "SourceId": "CursoNet6",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\",
+      "BasePath": "_content/CursoNet6",
+      "RelativePath": "Imagenes/dust_scratches.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\dust_scratches.png"
+    },
+    {
       "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Imagenes\\patio.jpg",
       "SourceId": "CursoNet6",
       "SourceType": "Discovered",
@@ -36973,6 +36990,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Imagenes\\producto\\a3aaccaf-bd00-43e8-bad0-67450a49db71.jpeg"
+    },
+    {
+      "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\Imagenes\\tile.png",
+      "SourceId": "CursoNet6",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\",
+      "BasePath": "_content/CursoNet6",
+      "RelativePath": "Imagenes/tile.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\tile.png"
+    },
+    {
+      "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\js\\orden.js",
+      "SourceId": "CursoNet6",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\",
+      "BasePath": "_content/CursoNet6",
+      "RelativePath": "js/orden.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\orden.js"
     },
     {
       "Identity": "D:\\Proyectos\\CursoNet6\\CursoNet6\\wwwroot\\js\\site.js",

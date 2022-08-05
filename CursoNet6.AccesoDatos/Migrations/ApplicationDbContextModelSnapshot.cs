@@ -42,6 +42,63 @@ namespace CursoNet6.AccesoDatos.Migrations
                     b.ToTable("Categoria");
                 });
 
+            modelBuilder.Entity("CursoNet6.Modelos.Orden", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaOrden")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NombreCompleto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsuarioAplicacionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioAplicacionId");
+
+                    b.ToTable("Orden");
+                });
+
+            modelBuilder.Entity("CursoNet6.Modelos.OrdenDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("OrdenId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrdenId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("OrdenDetalle");
+                });
+
             modelBuilder.Entity("CursoNet6.Modelos.Producto", b =>
                 {
                     b.Property<int>("Id")
@@ -309,10 +366,39 @@ namespace CursoNet6.AccesoDatos.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("NombreCompleto")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("UsuarioAplicacion");
+                });
+
+            modelBuilder.Entity("CursoNet6.Modelos.Orden", b =>
+                {
+                    b.HasOne("CursoNet6.Modelos.UsuarioAplicacion", "UsuarioAplicacion")
+                        .WithMany()
+                        .HasForeignKey("UsuarioAplicacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UsuarioAplicacion");
+                });
+
+            modelBuilder.Entity("CursoNet6.Modelos.OrdenDetalle", b =>
+                {
+                    b.HasOne("CursoNet6.Modelos.Orden", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrdenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CursoNet6.Modelos.Producto", "MyProperty")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MyProperty");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("CursoNet6.Modelos.Producto", b =>

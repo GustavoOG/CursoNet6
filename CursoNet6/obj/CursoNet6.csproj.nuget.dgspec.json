@@ -30,6 +30,9 @@
             "projectReferences": {
               "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj": {
                 "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Modelos\\CursoNet6.Modelos.csproj"
+              },
+              "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj": {
+                "projectPath": "D:\\Proyectos\\CursoNet6\\CursoNet6.Utilidades\\CursoNet6.Utilidades.csproj"
               }
             }
           }

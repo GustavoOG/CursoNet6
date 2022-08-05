@@ -9,15 +9,15 @@ namespace CursoNet6.Controllers
     [Authorize(Roles = WC.AdminRole)]
     public class TipoaplicacionController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public TipoaplicacionController(ApplicationDbContext db)
+        private readonly ITipoAplicacionRepositorio _tipoRepo;
+        public TipoaplicacionController(ITipoAplicacionRepositorio tipoRepo)
         {
-            this._db = db;
+            this._tipoRepo = tipoRepo;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<TipoAplicacion> lista = _db.TipoAplicacion;
+            IEnumerable<TipoAplicacion> lista = _tipoRepo.ObtenerTodos();
 
             return View(lista);
         }
@@ -34,8 +34,8 @@ namespace CursoNet6.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.TipoAplicacion.Add(tipoAplicacion);
-                _db.SaveChanges();
+                _tipoRepo.Agregar(tipoAplicacion);
+                _tipoRepo.Grabar();
                 return RedirectToAction(nameof(Index));
             }
             return View(tipoAplicacion);
@@ -47,7 +47,7 @@ namespace CursoNet6.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.TipoAplicacion.Find(Id);
+            var obj = _tipoRepo.Obtener(Id.GetValueOrDefault());
             if (obj == null)
             {
                 return NotFound();
@@ -62,8 +62,8 @@ namespace CursoNet6.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.TipoAplicacion.Update(tipoAplicacion);
-                _db.SaveChanges();
+                _tipoRepo.Actualizar(tipoAplicacion);
+                _tipoRepo.Grabar();
                 return RedirectToAction(nameof(Index));
             }
             return View(tipoAplicacion);
@@ -76,7 +76,7 @@ namespace CursoNet6.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.TipoAplicacion.Find(Id);
+            var obj = _tipoRepo.Obtener(Id.GetValueOrDefault());
             if (obj == null)
             {
                 return NotFound();
@@ -93,8 +93,8 @@ namespace CursoNet6.Controllers
             {
                 return NotFound();
             }
-            _db.TipoAplicacion.Remove(tipoAplicacion);
-            _db.SaveChanges();
+            _tipoRepo.Remover(tipoAplicacion);
+            _tipoRepo.Grabar();
             return RedirectToAction(nameof(Index));
         }
     }

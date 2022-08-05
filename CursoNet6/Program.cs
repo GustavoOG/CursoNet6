@@ -1,4 +1,6 @@
 global using CursoNet6.AccesoDatos.Datos;
+global using CursoNet6.AccesoDatos.Datos.Repositorio;
+global using CursoNet6.AccesoDatos.Datos.Repositorio.IRepositorio;
 global using CursoNet6.Utilidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -22,6 +24,16 @@ builder.Services.AddSession(Options =>
     Options.Cookie.HttpOnly = true;
     Options.Cookie.IsEssential = true;
 });
+
+//Utilizar interfaces, y se destruyan al dejarlas de utilizarlas
+builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
+builder.Services.AddScoped<ITipoAplicacionRepositorio, TipoAplicacionRepositorio>();
+builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
+
+builder.Services.AddScoped<IOrdenRepositorio, OrdenRepositorio>();
+builder.Services.AddScoped<IOrdenDetalleRepositorio, OrdenDetalleRepositorio>();
+builder.Services.AddScoped<IUsuarioAplicacionRepositorio, UsuarioAplicacionRepositorio>();
+
 
 builder.Services.AddControllersWithViews();
 

@@ -2,7 +2,6 @@
 using CursoNet6.Modelos;
 using CursoNet6.Modelos.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CursoNet6.Controllers
@@ -10,20 +9,24 @@ namespace CursoNet6.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _db;
+        //private readonly ApplicationDbContext _db;
+        private readonly IProductoRepositorio _productoRepo;
+        private readonly ICategoriaRepositorio _categoriaRepo;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
+
+        public HomeController(ILogger<HomeController> logger, IProductoRepositorio productoRepositorio, ICategoriaRepositorio categoriaRepositorio)
         {
             _logger = logger;
-            _db = db;
+            _categoriaRepo = categoriaRepositorio;
+            _productoRepo = productoRepositorio;
         }
 
         public IActionResult Index()
         {
             HomeVM homeVM = new HomeVM()
             {
-                Productos = _db.Producto.Include(m => m.Categoria).Include(m => m.TipoAplicacion),
-                Categorias = _db.Categoria
+                Productos = _productoRepo.ObtenerTodos(incluirPropiedades: "Categoria,TipoAplicacion"),
+                Categorias = _categoriaRepo.ObtenerTodos()
             };
             return View(homeVM);
         }
@@ -40,7 +43,8 @@ namespace CursoNet6.Controllers
 
             DetalleVM detalleVM = new DetalleVM()
             {
-                Producto = _db.Producto.Include(m => m.Categoria).Include(m => m.TipoAplicacion).FirstOrDefault(m => m.Id == Id),
+                Producto = _productoRepo.ObtenerPrimero(m => m.Id == Id, incluirPropiedades: "Categoria,TipoAplicacion"),
+                //_db.Producto.Include(m => m.Categoria).Include(m => m.TipoAplicacion).FirstOrDefault(m => m.Id == Id),
                 ExisteEnCarro = carroCompras.Any(m => m.ProductoID == Id)
             };
 
